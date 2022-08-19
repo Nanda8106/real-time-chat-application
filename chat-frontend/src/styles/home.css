@@ -1,0 +1,16 @@
+.home__bg{
+    background-image: url("../assets/friends.jpg");
+    height: 87vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.overflow{
+    overflow-x: hidden;
+}
+
+.home-message-icon{
+    margin-left: 10px;
+}
