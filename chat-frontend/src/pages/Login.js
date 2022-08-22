@@ -1,14 +1,26 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Col, Container, Row, Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../styles/login.css";
+import { useSignInUserMutation } from '../services/ApiHelper';
+import { AppContext } from '../context/AppContext';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userSignIn, {loading, error}] = useSignInUserMutation();
+  const {socket} = useContext(AppContext)
+  const navigate = useNavigate();
 
   const loginHandler = async (event) => {
     event.preventDefault();
+    userSignIn({email, password}).then( ({data}) => {
+      if(data){
+        //send new user to backend to connect to all the rooms by using socket
+        socket.emit("new-user")
+        navigate("/chat")
+      }
+    })
   }
   return (
     <Container>
