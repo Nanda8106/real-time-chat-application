@@ -42,7 +42,6 @@ const Signup = () => {
       return urlData.url
     } catch (error) {
       setUploadImage(false)
-      console.log(error)
     }
   }
 
@@ -52,10 +51,8 @@ const Signup = () => {
       return alert("Please upload profile picture!")
     } else {
       const url = await uploadingImage(image);
-      console.log(url)
       signupUser({ name, email, password, picture: url }).then(({ data }) => {
         if (data) {
-          console.log(data)
           navigate("/chat")
         }
       })
@@ -92,7 +89,7 @@ const Signup = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" required />
             </Form.Group>
-            <Button variant="primary" type="submit">{uploadImage || isLoading ? <Spinner animation='grow' />: "Signup"}</Button>
+            <Button className='chat-button' type="submit">{uploadImage || isLoading ? <Spinner animation='grow' />: "Signup"}</Button>
             <div className="py-4">
               <p className="text-center">
                 Already have an account: <Link to="/login">Login</Link>

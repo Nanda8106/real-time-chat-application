@@ -41,7 +41,6 @@ function MessageForm() {
     }
 
     socket.off("room-messages").on("room-messages", (roomMessages) => {
-        console.log(roomMessages)
         setMessages(roomMessages)
     })
     return (
@@ -87,7 +86,7 @@ function MessageForm() {
                         </Form.Group>
                     </Col>
                     <Col md={2}>
-                        <Button variant='primary' type='submit' disabled={!user} style={{ width: "100%", backgroundColor: "orange" }}><i className='fas fa-paper-plane'></i></Button>
+                        <Button className='chat-button' type='submit' disabled={!user} style={{ width: "100%", backgroundColor: "orange" }}><i className='fas fa-paper-plane'></i></Button>
                     </Col>
                 </Row>
             </Form>

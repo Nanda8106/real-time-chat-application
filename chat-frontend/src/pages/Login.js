@@ -41,7 +41,7 @@ const Login = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" required />
             </Form.Group>
-            <Button variant="primary" type="submit">{loading ? <Spinner animation='grow'/> : "Login"}</Button>
+            <Button className='chat-button' type="submit">{loading ? <Spinner animation='grow'/> : "Login"}</Button>
             <div className="py-4">
               <p className="text-center">
                 Don't have an account: <Link to="/signup">Signup</Link>

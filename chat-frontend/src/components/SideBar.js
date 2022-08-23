@@ -7,10 +7,19 @@ import "../styles/sidebar.css"
 
 
 function SideBar() {
-  // const rooms1 = ["First room", "Second room", "Third room"]
-  const { socket, rooms, setRooms, currentRoom, setCurrentRoom, members, setMembers, messages, setMessages, privateMemberMsg, setPrivateMemberMsg, newMessages, setNewMessages } = useContext(AppContext)
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch()
+  const { 
+    socket,
+    rooms,
+    setRooms, 
+    currentRoom, 
+    setCurrentRoom,
+    members,
+    setMembers,
+    privateMemberMsg,
+    setPrivateMemberMsg
+  } = useContext(AppContext)
 
   const getRooms = () => {
     fetch("http://localhost:4000/api/v1/rooms")
@@ -37,9 +46,9 @@ function SideBar() {
   }, [])
 
   const orderIds = (id1, id2) => {
-    if(id1 > id2){
+    if (id1 > id2) {
       return id1 + "-" + id2
-    }else{
+    } else {
       return id2 + "-" + id1
     }
   }

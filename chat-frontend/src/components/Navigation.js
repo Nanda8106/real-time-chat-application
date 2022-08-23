@@ -2,7 +2,7 @@ import React from 'react'
 import { Nav, Navbar, Container, NavDropdown, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { LinkContainer } from "react-router-bootstrap"
-import logo from "../assets/logo.jpg"
+import logo from "../assets/logo.png"
 import {useSignOutUserMutation} from "../services/ApiHelper"
 
 const Navigation = () => {
@@ -15,11 +15,11 @@ const Navigation = () => {
         window.location.replace("/")
     }
     return (
-        <Navbar style={{height: "70px"}} expand="lg">
+        <Navbar expand="lg">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        <img src={logo} style={{ width: 100, height: 50 }} alt="" />
+                        <img src={logo} style={{ width: 130}} alt="" />
                     </Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -53,7 +53,7 @@ const Navigation = () => {
                                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item>
-                                    <Button variant='danger' onClick={logoutHandler}>Logout</Button>
+                                    <Button variant='danger' onClick={logoutHandler}>Logout <i style={{marginLeft: 10}} className='fas fa-sign-out-alt'></i></Button>
                                 </NavDropdown.Item>
                             </NavDropdown>
                         )}
