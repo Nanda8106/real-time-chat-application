@@ -14,7 +14,6 @@ router.post("/signup", async(req, res) => {
         }else{
             message = error.message;
         }
-        console.log(error);
         res.status(400).json(message)
     }
 })
@@ -27,7 +26,6 @@ router.post("/signin", async(req, res) => {
         await user.save();
         res.status(200).json(user);
     }catch(error){
-        console.log(error);
         res.status(400).json(error.message)
     }
 })
