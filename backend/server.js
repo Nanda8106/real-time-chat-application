@@ -56,9 +56,10 @@ io.on("connection", (socket)=> {
         const members = await User.find();
         io.emit("new-user", members)
     })
-    socket.on("join-room", async(room) => {
-        socket.join(room)
-        let roomMessages = await getLastMessagesFromRoom(room);
+    socket.on("join-room", async(oldRoom, newRoom) => {
+        socket.join(newRoom)
+        socket.leave(oldRoom)
+        let roomMessages = await getLastMessagesFromRoom(newRoom);
         roomMessages = sortMessagesByDate(roomMessages)
         socket.emit('room-messages', roomMessages)
     })
@@ -72,6 +73,22 @@ io.on("connection", (socket)=> {
         io.to(room).emit("room-messages", roomMessages);
 
         socket.broadcast.emit("notifications", room)
+    })
+
+    app.delete("/api/v1/logout", async(req, res) => {
+        try{
+            const {_id, newMessages} = req.body;
+            const user = await User.findById(_id);
+            user.status = "offline";
+            user.newMessages = newMessages;
+            await user.save();
+            const members = await User.find();
+            socket.broadcast.emit("new-user", members);
+            res.status(200).send();
+
+        }catch(error){
+            res.status(400).send();
+        }
     })
 })
 

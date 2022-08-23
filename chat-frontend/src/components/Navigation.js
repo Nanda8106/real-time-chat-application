@@ -15,7 +15,7 @@ const Navigation = () => {
         window.location.replace("/")
     }
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar style={{height: "70px"}} expand="lg">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>

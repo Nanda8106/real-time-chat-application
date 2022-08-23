@@ -13,7 +13,7 @@ function App() {
   const [currentRoom, setCurrentRoom] = useState([]);
   const [members, setMembers] = useState([])
   const [messages, setMessages] = useState([])
-  const [privateMemberMsg, setPrivateMemberMsg] = useState({})
+  const [privateMemberMsg, setPrivateMemberMsg] = useState(null)
   const [newMessages, setNewMessages] = useState({})
   const user = useSelector((state) => state.user);
   return (

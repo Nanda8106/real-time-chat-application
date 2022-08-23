@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Col, Container, Row, Form, Button } from 'react-bootstrap';
+import { Col, Container, Row, Form, Button, Spinner } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import "../styles/signup.css";
 import bot from "../assets/bot.png";
@@ -76,6 +76,7 @@ const Signup = () => {
               </label>
             </div>
             <Form.Group className="mb-3" controlId="formBasicName">
+              {error && <p className='alert alert-danger'>{error.data}</p>}
               <Form.Label>Name</Form.Label>
               <Form.Control type="text" onChange={(e) => setName(e.target.value)} value={name} placeholder="Name" required />
             </Form.Group>
@@ -91,7 +92,7 @@ const Signup = () => {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Password" required />
             </Form.Group>
-            <Button variant="primary" type="submit">{uploadImage ? "Signing you up..." : "Signup"}</Button>
+            <Button variant="primary" type="submit">{uploadImage || isLoading ? <Spinner animation='grow' />: "Signup"}</Button>
             <div className="py-4">
               <p className="text-center">
                 Already have an account: <Link to="/login">Login</Link>

@@ -1,14 +1,15 @@
 .home__bg{
+    width: 100%;
     background-image: url("../assets/friends.jpg");
     height: 87vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow-x: hidden;
 }
 
 .overflow{
     overflow-x: hidden;
+    width: 100%;
 }
 
 .home-message-icon{

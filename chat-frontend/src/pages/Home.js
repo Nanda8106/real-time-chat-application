@@ -16,7 +16,7 @@ const Home = () => {
           </LinkContainer>
         </div>
       </Col>
-      <Col className='home__bg'>
+      <Col md={6} className='home__bg'>
       </Col>
     </Row>
   )
